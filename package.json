@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/sandeeppatel344/ecommerce#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "mysql": "^2.15.0",
+    "redis": "^2.8.0"
   }
 }
