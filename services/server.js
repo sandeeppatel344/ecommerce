@@ -14,7 +14,7 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //app.use(express.static(__dirname+'/../public'));
 app.use((req, res, next)=> {
-    if(req.originalUrl!="/user/login"){
+    if(req.originalUrl!="/save/userdetails"){
         client.get(req.headers.token,(error,response)=>{
             if(error){
                 console.log(error)
