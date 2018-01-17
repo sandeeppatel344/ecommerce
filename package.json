@@ -1,0 +1,22 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandeeppatel344/ecommerce.git"
+  },
+  "author": "sandeep and darshan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sandeeppatel344/ecommerce/issues"
+  },
+  "homepage": "https://github.com/sandeeppatel344/ecommerce#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
