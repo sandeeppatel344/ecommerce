@@ -4,7 +4,7 @@ module.exports.init = function(app,repo){
         projectrepo.saveUserDetails(req,function(error,data){
         if(error){
             console.log(error)
-            res.json({data:"Error in save customer"});
+            res.json({data:error});
         }else{
             res.json(data);
         }

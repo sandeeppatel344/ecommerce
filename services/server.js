@@ -15,18 +15,18 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //app.use(express.static(__dirname+'/../public'));
 app.use((req, res, next)=> {
     if(req.originalUrl!="/save/userdetails"){
-        client.get(req.headers.token,(error,response)=>{
-            if(error){
-                console.log(error)
-            }else if(response){
-                next();
-            }else{
-                res.json({message:"Invalid Token"});
-            }
-        })
+        // client.get(req.headers.token,(error,response)=>{
+        //     if(error){
+        //         console.log(error)
+        //     }else if(response){
+        //         next();
+        //     }else{
+        //         res.json({message:"Invalid Token"});
+        //     }
+        // })
       //  res.statusCode("403");
 
-
+      next();
 
     }else{
         console.log('Time:', new Date())
@@ -74,7 +74,7 @@ var smtpTransport = nodemailer.createTransport("smtp.gmail.com",{
 */
 
 //var port = process.env.PORT || 9111;
-app.listen(9111, function() {
+app.listen(9229, function() {
     console.log("Listening on " + "9111");
 });
 process.on('uncaughtException', function (err) {
