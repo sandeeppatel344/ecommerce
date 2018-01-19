@@ -14,25 +14,21 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //app.use(express.static(__dirname+'/../public'));
 app.use((req, res, next)=> {
-    if(req.originalUrl!="/save/userdetails"){
-        // client.get(req.headers.token,(error,response)=>{
-        //     if(error){
-        //         console.log(error)
-        //     }else if(response){
-        //         next();
-        //     }else{
-        //         res.json({message:"Invalid Token"});
-        //     }
-        // })
-      //  res.statusCode("403");
-
+    if(req.originalUrl!="/save/userdetails"||req.originalUrl!="/login/userlogin"||req.originalUrl!="/login/forgotpassword"){
+        client.get(req.headers.token,(error,response)=>{
+            if(error){
+                console.log(error)
+            }else if(response){
+                next();
+            }else{
+                res.json({message:"Invalid Token"});
+            }
+        })
       next();
-
     }else{
         console.log('Time:', new Date())
         next()
     }
-
 })
 app.use(function (err, req, res, next) {
     console.error(err.stack)
@@ -47,6 +43,14 @@ _(modules).forEach(function(module) {
     repo.init(provider);
     router.init(app, repo);
 });
+
+app.listen(9229, function() {
+    console.log("Listening on " + "9111");
+});
+process.on('uncaughtException', function (err) {
+    console.log("UNCAUGHT EXCEPTION" + err);
+});
+
 //
 /*
 var smtpTransport = nodemailer.createTransport("smtp.gmail.com",{
@@ -74,9 +78,3 @@ var smtpTransport = nodemailer.createTransport("smtp.gmail.com",{
 */
 
 //var port = process.env.PORT || 9111;
-app.listen(9229, function() {
-    console.log("Listening on " + "9111");
-});
-process.on('uncaughtException', function (err) {
-    console.log("UNCAUGHT EXCEPTION" + err);
-});
