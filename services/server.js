@@ -44,7 +44,7 @@ _(modules).forEach(function(module) {
     router.init(app, repo);
 });
 
-app.listen(9229, function() {
+app.listen(9111, function() {
     console.log("Listening on " + "9111");
 });
 process.on('uncaughtException', function (err) {

@@ -19,12 +19,13 @@ module.exports.userLogin = function(req,callback){
             return
         }
         if(result){
-                var token = guid.uuidv4();
-                client.set(token,token)
-                client.get(token,function(error,res){
-                console.log(res);
-                callback({"token":res})
-                })
+                var token1 = guid.uuidv4();
+                client.set(token,token1)
+                callback({"token":res,data:result})
+               // client.get(token,function(error,res){
+               // console.log(res);
+                
+               // })
             }
     })
 }
