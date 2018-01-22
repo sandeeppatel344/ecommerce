@@ -20,12 +20,13 @@ module.exports.userLogin = function(req,callback){
         }
         if(result){
                 var token1 = guid.uuidv4();
-                client.set(token,token1)
-                callback({"token":res,data:result})
-               // client.get(token,function(error,res){
-               // console.log(res);
-                
-               // })
+                client.set(token1,JSON.stringify(result))
+              
+                if(result.data.length == 0){
+                    callback({message:"Invalid username and password",error:true})
+                }else{
+                    callback({"token":token1,result})
+                }
             }
     })
 }

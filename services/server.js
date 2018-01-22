@@ -14,7 +14,9 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //app.use(express.static(__dirname+'/../public'));
 app.use((req, res, next)=> {
-    if(req.originalUrl!="/save/userdetails"||req.originalUrl!="/login/userlogin"||req.originalUrl!="/login/forgotpassword"){
+    console.log(req.originalUrl)
+    if(req.originalUrl != "/save/userdetails" && req.originalUrl != "/login/userlogin" && req.originalUrl != "/login/forgotpassword"){
+        console.log(req.originalUrl != "/save/userdetails")
         client.get(req.headers.token,(error,response)=>{
             if(error){
                 console.log(error)
@@ -24,7 +26,7 @@ app.use((req, res, next)=> {
                 res.json({message:"Invalid Token"});
             }
         })
-      next();
+      //next();
     }else{
         console.log('Time:', new Date())
         next()
@@ -35,7 +37,7 @@ app.use(function (err, req, res, next) {
     res.status(500).send('Something broke!')
 })
 console.log(__dirname+'/../public')
-var modules = ["user_details"];
+var modules = ["user_details","product","login"];
 _(modules).forEach(function(module) {
     var router = require('./projections/' + module + '/routes/routes.js');
     var provider = require('./projections/' + module + '/dbprovider/' + 'dbprovider' + '.js');

@@ -29,6 +29,8 @@ var executeQuery = function(dbName, query,  callback){
 exports.executeQuery = executeQuery;
 
 var executeQueryWithParameters = function(dbName, query, params, callback){
+    console.log(query)
+    console.log(params)
     //getConnection(dbName, function(error, client, done){
       //  if(error){
         //    callback(error);
@@ -46,7 +48,7 @@ var executeQueryWithParameters = function(dbName, query, params, callback){
             }
             else{
                 var r = {};
-                r.data = result.rows;
+                r.data = result;
                 callback(null,r);
             }
         });
